@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#143d34">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Motorhome Buyer">
+  <title>Motorhome Buyer</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icons/icon-180.png">
+  <style>
+    :root{--bg:#f4f6f5;--card:#fff;--text:#17211e;--muted:#65706c;--line:#d8dfdc;--accent:#143d34;--accent2:#e6f1ed;--good:#1f7a4d;--amber:#a96a00;--bad:#b23b3b}
+    *{box-sizing:border-box} body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}
+    .wrap{max-width:760px;margin:auto;padding:env(safe-area-inset-top) 14px calc(28px + env(safe-area-inset-bottom))}
+    header{padding:18px 2px 12px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+    h1{font-size:24px;margin:0} h2{font-size:18px;margin:0 0 12px} h3{margin:0 0 8px}
+    .sub{color:var(--muted);font-size:14px}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;margin:12px 0}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.grid1{display:grid;gap:12px}.full{grid-column:1/-1}
+    label{font-size:14px;color:var(--muted);display:block} input,select,textarea{width:100%;margin-top:6px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--text);font-size:16px;padding:12px} textarea{min-height:90px;resize:vertical}
+    button,.btn{appearance:none;border:0;border-radius:12px;padding:12px 14px;font-size:16px;font-weight:650;background:var(--accent);color:#fff;text-decoration:none;text-align:center;display:inline-block}
+    button.secondary,.btn.secondary{background:#fff;color:var(--text);border:1px solid var(--line)} button.danger{background:var(--bad)}
+    .actions{display:flex;gap:10px;flex-wrap:wrap}.actions>*{flex:1;min-width:120px}.tabs{display:flex;gap:8px;overflow:auto;padding:2px 0 6px}.tab{white-space:nowrap;background:#fff;color:var(--text);border:1px solid var(--line);padding:10px 13px}.tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+    .hidden{display:none!important}.checks{display:grid;grid-template-columns:1fr 1fr;gap:10px}.check{display:flex;align-items:flex-start;gap:10px;color:var(--text);font-size:15px}.check input{width:22px;height:22px;margin:0;flex:0 0 auto}
+    .scorebox{display:grid;grid-template-columns:120px 1fr;gap:14px;align-items:center}.score{width:110px;height:110px;border-radius:50%;display:grid;place-items:center;background:var(--accent2);border:10px solid var(--accent);font-size:30px;font-weight:800}.badge{display:inline-block;border-radius:999px;padding:6px 10px;font-size:13px;font-weight:700}.green{background:#e6f5ed;color:var(--good)}.amber{background:#fff1d6;color:var(--amber)}.red{background:#fde8e8;color:var(--bad)}
+    .vehicle{display:grid;grid-template-columns:1fr auto;gap:10px;padding:14px 0;border-bottom:1px solid var(--line)}.vehicle:last-child{border-bottom:0}.vtitle{font-weight:750}.meta{font-size:14px;color:var(--muted);margin-top:4px}.vscore{font-weight:800;font-size:22px}.empty{text-align:center;color:var(--muted);padding:24px 8px}
+    .compare{overflow:auto}.compare table{border-collapse:collapse;min-width:650px;width:100%}.compare th,.compare td{padding:10px;border-bottom:1px solid var(--line);text-align:left;font-size:14px}.compare th{position:sticky;top:0;background:var(--card)}
+    .topline{display:flex;justify-content:space-between;align-items:center;gap:12px}.small{font-size:13px;color:var(--muted)}
+    @media(max-width:560px){.grid,.checks{grid-template-columns:1fr}.scorebox{grid-template-columns:100px 1fr}.score{width:92px;height:92px;font-size:26px;border-width:8px}.wrap{padding-left:10px;padding-right:10px}}
+  </style>
+</head>
+<body>
+<div class="wrap">
+<header><div><h1>Motorhome Buyer</h1><div class="sub">Shortlist, score and compare before you buy</div></div><button id="installBtn" class="secondary hidden">Install</button></header>
+<nav class="tabs" aria-label="Sections">
+  <button class="tab active" data-view="shortlist">Shortlist</button>
+  <button class="tab" data-view="new">New viewing</button>
+  <button class="tab" data-view="compare">Compare</button>
+  <button class="tab" data-view="settings">Backup</button>
+</nav>
+
+<section id="shortlist" class="view">
+  <div class="card"><div class="topline"><div><h2>Your shortlist</h2><div id="summary" class="sub">No motorhomes saved yet</div></div><button id="addFirst">+ Add</button></div></div>
+  <div id="vehicleList" class="card"><div class="empty">Add a motorhome to begin.</div></div>
+</section>
+
+<section id="new" class="view hidden">
+  <div class="card"><h2>Motorhome details</h2>
+    <div class="grid">
+      <label class="full">Make and model<input id="model" placeholder="Elddis Majestic 254"></label>
+      <label>Registration<input id="reg" placeholder="AB18 CDE"></label>
+      <label>Dealer / seller<input id="dealer" placeholder="Dealer name"></label>
+      <label>Year<input id="year" type="number" value="2018"></label>
+      <label>Price (£)<input id="price" type="number" value="40000" step="500"></label>
+      <label>Mileage<input id="mileage" type="number" value="20000" step="500"></label>
+      <label>Advert link<input id="link" type="url" placeholder="https://..."></label>
+      <label>Base vehicle<select id="base"><option value="10">Fiat Ducato 2.3</option><option value="9.5">Peugeot Boxer 2.0</option><option value="9">Citroën Relay</option><option value="9">Mercedes Sprinter</option><option value="8.5">Fiat/Peugeot 2.2</option><option value="7">Ford EcoBlue wet belt</option><option value="7.5">Other / unknown</option></select></label>
+      <label>Euro standard<select id="euro"><option value="5">Euro 6</option><option value="2">Euro 5</option><option value="0">Older / unknown</option></select></label>
+      <label>Bed layout<select id="bed"><option value="10">Fixed island bed</option><option value="9">Fixed French bed</option><option value="8.5">Fixed twin singles</option><option value="7">Drop-down bed</option><option value="5">Bed made from lounge</option></select></label>
+      <label>Heating<select id="heating"><option value="5">Alde wet heating</option><option value="4">Truma Combi</option><option value="2">Other / unknown</option></select></label>
+      <label>Payload<select id="payload"><option value="5">500kg or more</option><option value="4">400–499kg</option><option value="3">300–399kg</option><option value="1">Below 300kg</option><option value="2">Unknown</option></select></label>
+      <label>Maximum weight<select id="weight"><option value="4">3,500kg or below</option><option value="3">Over 3,500kg — C1 required</option><option value="1">Unknown</option></select></label>
+    </div>
+  </div>
+  <div class="card"><h2>Layout and equipment</h2><div class="checks">
+    <label class="check"><input id="garage" type="checkbox" checked>Useful rear garage</label><label class="check"><input id="shower" type="checkbox" checked>Separate shower</label><label class="check"><input id="kitchen" type="checkbox" checked>Kitchen usable while bed occupied</label><label class="check"><input id="aircon" type="checkbox" checked>Cab air conditioning</label><label class="check"><input id="cruise" type="checkbox" checked>Cruise control</label><label class="check"><input id="camera" type="checkbox" checked>Reversing camera</label><label class="check"><input id="solar" type="checkbox">Solar panel</label><label class="check"><input id="awning" type="checkbox">Awning</label>
+  </div></div>
+  <div class="card"><h2>Condition and evidence</h2><div class="checks">
+    <label class="check"><input id="engineHistory" type="checkbox">Engine history</label><label class="check"><input id="habHistory" type="checkbox">Habitation history</label><label class="check"><input id="dampReport" type="checkbox">Recent written damp report</label><label class="check"><input id="warranty" type="checkbox">Dealer warranty</label><label class="check"><input id="tyres" type="checkbox">Tyres under six years</label><label class="check"><input id="belt" type="checkbox">Cambelt / wet-belt documented</label>
+  </div><label style="margin-top:12px">Known concerns<select id="concerns"><option value="0">None identified</option><option value="-4">Minor cosmetic / equipment issue</option><option value="-10">Missing history / expensive maintenance due</option><option value="-25">Damp / structural / serious warning</option></select></label><label style="margin-top:12px">Notes<textarea id="notes" placeholder="What did you and your wife like or dislike?"></textarea></label></div>
+  <div id="scorePreview" class="card hidden"></div>
+  <div class="actions"><button id="scoreBtn" class="secondary">Calculate score</button><button id="saveBtn">Save motorhome</button><button id="cancelEdit" class="secondary hidden">Cancel edit</button></div>
+</section>
+
+<section id="compare" class="view hidden"><div class="card"><h2>Side-by-side comparison</h2><div class="sub">The highest-scoring saved motorhomes appear first.</div></div><div id="compareTable" class="card compare"><div class="empty">Save at least two motorhomes to compare.</div></div></section>
+
+<section id="settings" class="view hidden"><div class="card"><h2>Backup and sharing</h2><p class="sub">Your shortlist is stored on this device. Export a backup to share with your wife or move it to another phone.</p><div class="actions"><button id="exportJson">Export backup</button><button id="exportCsv" class="secondary">Export spreadsheet</button></div><label style="margin-top:14px">Import a backup<input id="importFile" type="file" accept="application/json"></label></div><div class="card"><h2>Install on iPhone</h2><ol class="small"><li>Open the hosted app in Safari.</li><li>Tap the Share button.</li><li>Choose <strong>Add to Home Screen</strong>.</li><li>Tap <strong>Add</strong>.</li></ol></div><div class="card"><h2>Data warning</h2><div class="small">Deleting website data or the browser may remove saved records. Export a backup periodically.</div></div></section>
+</div>
+<script>
+const $=id=>document.getElementById(id); let editId=null; let deferredPrompt=null;
+const fields=['model','reg','dealer','year','price','mileage','link','base','euro','bed','heating','payload','weight','garage','shower','kitchen','aircon','cruise','camera','solar','awning','engineHistory','habHistory','dampReport','warranty','tyres','belt','concerns','notes'];
+function getVehicles(){return JSON.parse(localStorage.getItem('mhVehicles')||'[]')} function setVehicles(v){localStorage.setItem('mhVehicles',JSON.stringify(v))}
+function formData(){let o={}; fields.forEach(id=>{const e=$(id);o[id]=e.type==='checkbox'?e.checked:e.value});return o}
+function scoreVehicle(o){let s=0,w=[]; s+=+o.base + +o.euro + +o.bed + +o.heating + +o.payload + +o.weight; const pts={garage:3,shower:3,kitchen:4,aircon:2,cruise:1.5,camera:1.5,solar:1.5,awning:1,engineHistory:6,habHistory:6,dampReport:8,warranty:3,tyres:3,belt:4}; Object.entries(pts).forEach(([k,v])=>{if(o[k])s+=v}); const age=Math.max(0,2026-(+o.year||2026)); s+=Math.max(0,8-age*.55); const m=+o.mileage||0,p=+o.price||0; s+=m<=15000?6:m<=30000?5:m<=50000?3:1; s+=p<=40000?7:p<=45000?5.5:p<=50000?4:2; s+=+o.concerns||0; if(!o.dampReport)w.push('Obtain a written damp report.'); if(!o.engineHistory)w.push('Engine history not confirmed.'); if(!o.habHistory)w.push('Habitation history not confirmed.'); if(+o.payload<=2)w.push('Payload needs checking.'); if(+o.weight===3)w.push('C1 entitlement required.'); if(+o.base===7&&!o.belt)w.push('Ford wet-belt evidence is essential.'); s=Math.max(0,Math.min(100,Math.round(s))); let d=s>=90?'Exceptional':s>=85?'Very good':s>=75?'Consider':s>=65?'Caution':'Walk away'; return {score:s,decision:d,warnings:w}}
+function badgeClass(s){return s>=85?'green':s>=65?'amber':'red'}
+function showView(id){document.querySelectorAll('.view').forEach(v=>v.classList.add('hidden'));$(id).classList.remove('hidden');document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.view===id)); if(id==='shortlist')renderList();if(id==='compare')renderCompare()}
+document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>showView(t.dataset.view))); $('addFirst').onclick=()=>{resetForm();showView('new')}
+function renderList(){let v=getVehicles().sort((a,b)=>b.score-a.score);$('summary').textContent=v.length?`${v.length} saved • Best score ${v[0].score}/100`:'No motorhomes saved yet'; if(!v.length){$('vehicleList').innerHTML='<div class="empty">Add a motorhome to begin.</div>';return} $('vehicleList').innerHTML=v.map(x=>`<div class="vehicle"><div><div class="vtitle">${esc(x.model||'Unnamed motorhome')}</div><div class="meta">${x.year||''} • £${Number(x.price||0).toLocaleString()} • ${Number(x.mileage||0).toLocaleString()} miles<br>${esc(x.dealer||'')}</div><div class="actions" style="margin-top:9px"><button class="secondary edit" data-id="${x.id}">Edit</button><button class="secondary openlink" data-link="${esc(x.link||'')}">Advert</button><button class="danger del" data-id="${x.id}">Delete</button></div></div><div><div class="vscore">${x.score}</div><span class="badge ${badgeClass(x.score)}">${x.decision}</span></div></div>`).join(''); document.querySelectorAll('.edit').forEach(b=>b.onclick=()=>editVehicle(b.dataset.id));document.querySelectorAll('.del').forEach(b=>b.onclick=()=>deleteVehicle(b.dataset.id));document.querySelectorAll('.openlink').forEach(b=>b.onclick=()=>{if(b.dataset.link)location.href=b.dataset.link;else alert('No advert link saved.')})}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function preview(){const o=formData(),r=scoreVehicle(o);$('scorePreview').classList.remove('hidden');$('scorePreview').innerHTML=`<div class="scorebox"><div class="score">${r.score}</div><div><h3>${esc(o.model||'This motorhome')}</h3><span class="badge ${badgeClass(r.score)}">${r.decision}</span><p class="small">${r.warnings.length?r.warnings.join(' '):'No immediate red flags entered. Independent checks are still essential.'}</p></div></div>`;return {...o,...r}}
+$('scoreBtn').onclick=preview;
+$('saveBtn').onclick=()=>{let o=preview(); if(!o.model.trim()){alert('Please enter the make and model.');return} let v=getVehicles(); if(editId){v=v.map(x=>x.id===editId?{...o,id:editId}:x)}else v.push({...o,id:crypto.randomUUID?crypto.randomUUID():String(Date.now())});setVehicles(v);resetForm();showView('shortlist')}
+function editVehicle(id){const x=getVehicles().find(v=>v.id===id);if(!x)return;fields.forEach(k=>{const e=$(k);if(e.type==='checkbox')e.checked=!!x[k];else e.value=x[k]??''});editId=id;$('cancelEdit').classList.remove('hidden');$('saveBtn').textContent='Update motorhome';showView('new');preview()}
+$('cancelEdit').onclick=()=>{resetForm();showView('shortlist')};function deleteVehicle(id){if(confirm('Delete this motorhome from the shortlist?')){setVehicles(getVehicles().filter(v=>v.id!==id));renderList()}}
+function resetForm(){editId=null;document.querySelectorAll('#new input[type=text],#new input[type=url],#new textarea').forEach(e=>e.value='');$('year').value=2018;$('price').value=40000;$('mileage').value=20000;['base','euro','bed','heating','payload','weight','concerns'].forEach(id=>$(id).selectedIndex=0);fields.filter(id=>$(id)&&$(id).type==='checkbox').forEach(id=>$(id).checked=['garage','shower','kitchen','aircon','cruise','camera'].includes(id));$('scorePreview').classList.add('hidden');$('cancelEdit').classList.add('hidden');$('saveBtn').textContent='Save motorhome'}
+function renderCompare(){let v=getVehicles().sort((a,b)=>b.score-a.score);if(v.length<2){$('compareTable').innerHTML='<div class="empty">Save at least two motorhomes to compare.</div>';return} const rows=[['Score',x=>x.score],['Decision',x=>x.decision],['Price',x=>'£'+Number(x.price||0).toLocaleString()],['Year',x=>x.year],['Mileage',x=>Number(x.mileage||0).toLocaleString()],['Base',x=>$('base').querySelector(`option[value="${x.base}"]`)?.textContent||''],['Bed',x=>$('bed').querySelector(`option[value="${x.bed}"]`)?.textContent||''],['Heating',x=>$('heating').querySelector(`option[value="${x.heating}"]`)?.textContent||''],['Damp report',x=>x.dampReport?'Yes':'No'],['Habitation history',x=>x.habHistory?'Yes':'No']];$('compareTable').innerHTML='<table><thead><tr><th>Criteria</th>'+v.map(x=>`<th>${esc(x.model)}</th>`).join('')+'</tr></thead><tbody>'+rows.map(r=>'<tr><th>'+r[0]+'</th>'+v.map(x=>`<td>${esc(r[1](x))}</td>`).join('')+'</tr>').join('')+'</tbody></table>'}
+$('exportJson').onclick=()=>download('motorhome-backup.json',JSON.stringify(getVehicles(),null,2),'application/json');$('exportCsv').onclick=()=>{let v=getVehicles(),cols=['model','reg','dealer','year','price','mileage','score','decision','notes'];let csv=[cols.join(','),...v.map(x=>cols.map(k=>'"'+String(x[k]??'').replace(/"/g,'""')+'"').join(','))].join('\n');download('motorhome-shortlist.csv',csv,'text/csv')};function download(name,data,type){let a=document.createElement('a');a.href=URL.createObjectURL(new Blob([data],{type}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
+$('importFile').onchange=e=>{let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{let d=JSON.parse(r.result);if(!Array.isArray(d))throw 0;setVehicles(d);alert('Backup imported.');showView('shortlist')}catch{alert('That backup file could not be read.')}};r.readAsText(f)}
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;$('installBtn').classList.remove('hidden')});$('installBtn').onclick=async()=>{if(deferredPrompt){deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;$('installBtn').classList.add('hidden')}else alert('On iPhone, open in Safari, tap Share, then Add to Home Screen.')};
+if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('sw.js'));
+renderList();
+</script>
+</body>
+</html>
