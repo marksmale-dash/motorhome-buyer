@@ -1,16 +1,15 @@
 {
   "name": "Motorhome Compass",
-  "short_name": "MH Compass",
-  "description": "A simple motorhome buying, viewing and comparison companion.",
-  "start_url": "./",
-  "scope": "./",
+  "short_name": "Motorhome Compass",
+  "start_url": "/motorhome-buyer/",
+  "scope": "/motorhome-buyer/",
   "display": "standalone",
-  "background_color": "#f4f7f5",
-  "theme_color": "#174c3c",
-  "orientation": "portrait-primary",
+  "background_color": "#f4f6f5",
+  "theme_color": "#143d34",
+  "description": "Import, score, photograph and compare motorhomes before purchase.",
   "icons": [
-    {"src":"icons/icon-180.png","sizes":"180x180","type":"image/png"},
     {"src":"icons/icon-192.png","sizes":"192x192","type":"image/png"},
-    {"src":"icons/icon-512.png","sizes":"512x512","type":"image/png"}
+    {"src":"icons/icon-512.png","sizes":"512x512","type":"image/png"},
+    {"src":"icons/icon-180.png","sizes":"180x180","type":"image/png"}
   ]
 }
