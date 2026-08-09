@@ -1,6 +1,6 @@
-/* Motorhome Compass v1.2g - reliable gallery sizing controls
+/* Motorhome Compass v1.2h - decoded covers and viewport-locked gallery
    Clears legacy cached builds and uses the network for current app files. */
-const CACHE_VERSION = 'motorhome-compass-v1.2g-20260809'
+const CACHE_VERSION = 'motorhome-compass-v1.2h-20260809'
 
 self.addEventListener('install', () => {
   self.skipWaiting()
