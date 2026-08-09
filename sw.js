@@ -1,6 +1,6 @@
-/* Motorhome Compass v1.2s - clear bulk Facebook photo saving and duplicate protection
+/* Motorhome Compass v1.2t - one-recording Facebook photo extraction
    Clears legacy cached builds and uses the network for current app files. */
-const CACHE_VERSION = 'motorhome-compass-v1.2s-20260810'
+const CACHE_VERSION = 'motorhome-compass-v1.2t-20260810'
 
 self.addEventListener('install', () => {
   self.skipWaiting()
