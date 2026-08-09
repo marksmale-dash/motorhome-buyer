@@ -1,6 +1,6 @@
-/* Motorhome Compass v1.2w - review recording photos before saving
+/* Motorhome Compass v1.2x - fill missing details from advert text
    Clears legacy cached builds and uses the network for current app files. */
-const CACHE_VERSION = 'motorhome-compass-v1.2w-20260810'
+const CACHE_VERSION = 'motorhome-compass-v1.2x-20260810'
 
 self.addEventListener('install', () => {
   self.skipWaiting()
