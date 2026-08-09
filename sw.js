@@ -1,6 +1,6 @@
-/* Motorhome Compass v1.2d - update-safe service worker
+/* Motorhome Compass v1.2e - complete media stability repair
    Clears legacy cached builds and uses the network for current app files. */
-const CACHE_VERSION = 'motorhome-compass-v1.2d-20260807'
+const CACHE_VERSION = 'motorhome-compass-v1.2e-20260809'
 
 self.addEventListener('install', () => {
   self.skipWaiting()
