@@ -1,6 +1,6 @@
-/* Motorhome Compass v1.2r - reliable iPhone photo picker and direct card details
+/* Motorhome Compass v1.2s - clear bulk Facebook photo saving and duplicate protection
    Clears legacy cached builds and uses the network for current app files. */
-const CACHE_VERSION = 'motorhome-compass-v1.2r-20260810'
+const CACHE_VERSION = 'motorhome-compass-v1.2s-20260810'
 
 self.addEventListener('install', () => {
   self.skipWaiting()
