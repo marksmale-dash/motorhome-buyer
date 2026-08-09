@@ -1,6 +1,6 @@
-/* Motorhome Compass v1.2p - reliable iPhone photo picker and direct card details
-   Clears legacy cached builds and uses the network for current app files. */
-const CACHE_VERSION = 'motorhome-compass-v1.2p-20260809'
+/* Motorhome Compass v1.2q - emergency visual rollback to verified 1.2o
+   Clears the broken 1.2p presentation cache and uses the network for current app files. */
+const CACHE_VERSION = 'motorhome-compass-v1.2q-20260809'
 
 self.addEventListener('install', () => {
   self.skipWaiting()
