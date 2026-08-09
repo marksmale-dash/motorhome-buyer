@@ -1,6 +1,6 @@
-/* Motorhome Compass v1.2n - consolidation ownership repair
+/* Motorhome Compass v1.2o - Highbridge gallery recovery and Facebook photo guidance
    Clears legacy cached builds and uses the network for current app files. */
-const CACHE_VERSION = 'motorhome-compass-v1.2n-20260809'
+const CACHE_VERSION = 'motorhome-compass-v1.2o-20260809'
 
 self.addEventListener('install', () => {
   self.skipWaiting()
