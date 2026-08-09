@@ -1,6 +1,6 @@
-/* Motorhome Compass v1.2f - initial-cover and iPhone safe-area repair
+/* Motorhome Compass v1.2g - reliable gallery sizing controls
    Clears legacy cached builds and uses the network for current app files. */
-const CACHE_VERSION = 'motorhome-compass-v1.2f-20260809'
+const CACHE_VERSION = 'motorhome-compass-v1.2g-20260809'
 
 self.addEventListener('install', () => {
   self.skipWaiting()
