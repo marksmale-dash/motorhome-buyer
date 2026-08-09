@@ -1,6 +1,6 @@
-/* Motorhome Compass v1.2i - body-level, viewport-pinned gallery
+/* Motorhome Compass v1.2k - advert photo recovery, invitations and card details
    Clears legacy cached builds and uses the network for current app files. */
-const CACHE_VERSION = 'motorhome-compass-v1.2i-20260809'
+const CACHE_VERSION = 'motorhome-compass-v1.2k-20260809'
 
 self.addEventListener('install', () => {
   self.skipWaiting()
