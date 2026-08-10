@@ -4,9 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="theme-color" content="#0d4838" />
+    <meta name="application-version" content="1.3b" />
     <title>Motorhome Compass</title>
-    <script type="module" crossorigin src="/motorhome-buyer/assets/index-CXJLhiPv.js"></script>
-    <link rel="stylesheet" crossorigin href="/motorhome-buyer/assets/index-BDU57to4.css">
+    <script type="module" crossorigin src="/motorhome-buyer/assets/index-1.3b-live.js?v=1.3b"></script>
+    <link rel="stylesheet" crossorigin href="/motorhome-buyer/assets/index-BDU57to4.css?v=1.3b">
+    <style>
+      .settings-backdrop{position:fixed;inset:0;z-index:1250;display:grid;place-items:center;padding:20px;background:#05100db8;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+      .settings-panel{position:relative;width:min(480px,100%);padding:26px;border-radius:22px;background:#fff;box-shadow:0 26px 80px #00000052;color:#17372e}
+      .settings-panel h2{margin:0 46px 16px 0}
+      .settings-close{position:absolute;top:14px;right:14px;width:44px;height:44px;border:0;border-radius:50%;background:#edf3f0;color:#17372e;font-size:1.6rem;cursor:pointer}
+      .settings-app-name{font-size:1.08rem;font-weight:900;margin-bottom:12px}
+      .settings-version,.settings-detail{display:flex;justify-content:space-between;gap:18px;padding:12px 0;border-top:1px solid #dfeae6}
+      .settings-version span,.settings-detail span{color:#60776f}
+      .settings-version strong,.settings-detail strong{text-align:right;overflow-wrap:anywhere}
+      .settings-note{margin:14px 0 0;color:#60776f;line-height:1.45;font-size:.92rem}
+      .invite-reset{margin-top:10px!important}
+      .settings-button{white-space:nowrap}
+      .auth-or{text-align:center;margin:12px 0;font-weight:700;color:#65736d}
+      .auth-submit.secondary{width:100%}
+      @media(max-width:740px){
+        .settings-backdrop{align-items:start;padding:calc(18px + env(safe-area-inset-top)) max(14px,env(safe-area-inset-right)) calc(18px + env(safe-area-inset-bottom)) max(14px,env(safe-area-inset-left));overflow:auto}
+        .settings-panel{padding:22px 18px}
+        .settings-button{font-size:.76rem}
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>
