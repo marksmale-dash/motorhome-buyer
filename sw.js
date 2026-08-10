@@ -1,6 +1,6 @@
-/* Motorhome Compass v1.2z - persistent household invitation confirmation
+/* Motorhome Compass v1.3a - genuine household invitation email delivery
    Clears legacy cached builds and uses the network for current app files. */
-const CACHE_VERSION = 'motorhome-compass-v1.2z-20260810'
+const CACHE_VERSION = 'motorhome-compass-v1.3a-20260810'
 
 self.addEventListener('install', () => {
   self.skipWaiting()
