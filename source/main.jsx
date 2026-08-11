@@ -2,6 +2,7 @@ import "./app.css";
 import {
   isValidEmail,
   isValidOtp,
+  EMAIL_OTP_MAX_LENGTH,
   normalizeEmail,
   normalizeOtp,
   verifyEmailOtp,
@@ -25149,7 +25150,7 @@ function hw() {
     }
     (X(!0),
       MHCsetOtpCode(""),
-      f(`Sign-in code sent to ${w}. Enter the six-digit code below.`));
+      f(`Sign-in code sent to ${w}. Enter the code below.`));
   }
   async function MHCverifyEmailOtp() {
     const w = normalizeEmail(D);
@@ -25159,7 +25160,7 @@ function hw() {
       return;
     }
     if (!isValidOtp(H)) {
-      f("Enter the six-digit sign-in code from the email.");
+      f("Enter the 6-to-10-digit sign-in code from the email.");
       return;
     }
     (MHCsetVerifyingOtp(!0), f("Checking your sign-in code…"));
@@ -27002,7 +27003,7 @@ Tap Continue to open this motorhome’s advert.`) &&
                             className: "settings-version",
                             children: [
                               y.jsx("span", { children: "Version" }),
-                              y.jsx("strong", { children: "1.3d" }),
+                              y.jsx("strong", { children: "1.3e" }),
                             ],
                           }),
                           y.jsxs("div", {
@@ -27080,7 +27081,7 @@ Tap Continue to open this motorhome’s advert.`) &&
                         y.jsx("p", {
                           className: "auth-help",
                           children:
-                            "Enter the six-digit code from the Motorhome Compass email. The session will be saved in this Home Screen app.",
+                            "Enter the code from the Motorhome Compass email. The session will be saved in this Home Screen app.",
                         }),
                         y.jsxs("label", {
                           children: [
@@ -27089,7 +27090,7 @@ Tap Continue to open this motorhome’s advert.`) &&
                               type: "text",
                               inputMode: "numeric",
                               autoComplete: "one-time-code",
-                              maxLength: 6,
+                              maxLength: EMAIL_OTP_MAX_LENGTH,
                               value: MHCotpCode,
                               onChange: (H) =>
                                 MHCsetOtpCode(normalizeOtp(H.target.value)),
@@ -27176,7 +27177,7 @@ Tap Continue to open this motorhome’s advert.`) &&
                         y.jsx("p", {
                           className: "auth-help",
                           children:
-                            "Enter the six-digit code from the Motorhome Compass email. The session will be saved in this Home Screen app.",
+                            "Enter the code from the Motorhome Compass email. The session will be saved in this Home Screen app.",
                         }),
                         y.jsxs("label", {
                           children: [
@@ -27185,7 +27186,7 @@ Tap Continue to open this motorhome’s advert.`) &&
                               type: "text",
                               inputMode: "numeric",
                               autoComplete: "one-time-code",
-                              maxLength: 6,
+                              maxLength: EMAIL_OTP_MAX_LENGTH,
                               value: MHCotpCode,
                               onChange: (H) =>
                                 MHCsetOtpCode(normalizeOtp(H.target.value)),
