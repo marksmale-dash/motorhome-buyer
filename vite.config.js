@@ -5,5 +5,6 @@ export default defineConfig({
   root: 'source',
   base: '/motorhome-buyer/',
   plugins: [react()],
+  publicDir: '../public',
   build: { outDir: '../dist', emptyOutDir: true },
 })
