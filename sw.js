@@ -1,6 +1,6 @@
-/* Motorhome Compass v1.3b - household sharing diagnostics + passwordless owner access
-   Clears legacy cached builds and uses the network for current app files. */
-const CACHE_VERSION = 'motorhome-compass-v1.3b-20260810'
+/* Motorhome Compass v1.3d - persistent in-app email OTP authentication.
+   Clears legacy caches and always checks the network for the current app shell. */
+const CACHE_VERSION = 'motorhome-compass-v1.3d-20260811'
 
 self.addEventListener('install', () => {
   self.skipWaiting()
@@ -23,7 +23,8 @@ self.addEventListener('fetch', (event) => {
 
   event.respondWith((async () => {
     try {
-      return await fetch(request, { cache: 'no-store' })
+      const response = await fetch(request, { cache: 'no-store' })
+      return response
     } catch (error) {
       const cached = await caches.match(request)
       if (cached) return cached
