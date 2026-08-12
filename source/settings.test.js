@@ -10,5 +10,7 @@ describe('Settings dialog presentation', () => {
     expect(css).toMatch(/\.settings-backdrop\{[^}]*z-index:1300/)
     expect(css).toMatch(/\.settings-panel\{[^}]*background:#fff/)
     expect(css).toContain('@media(max-width:740px){.settings-button')
+    expect(css).toContain('.header-actions{display:grid;width:100%')
+    expect(css).toMatch(/\.header-actions button\{[^}]*overflow:hidden/)
   })
 })

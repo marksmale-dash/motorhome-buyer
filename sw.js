@@ -1,6 +1,6 @@
-/* Motorhome Compass v1.3g - visible mobile Settings dialog.
+/* Motorhome Compass v1.3h - contained mobile header buttons.
    Clears legacy caches and always checks the network for the current app shell. */
-const CACHE_VERSION = 'motorhome-compass-v1.3g-20260812'
+const CACHE_VERSION = 'motorhome-compass-v1.3h-20260812'
 
 self.addEventListener('install', () => {
   self.skipWaiting()

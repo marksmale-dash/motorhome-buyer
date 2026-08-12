@@ -26981,7 +26981,7 @@ Tap Continue to open this motorhome’s advert.`) &&
                             className: "settings-version",
                             children: [
                               y.jsx("span", { children: "Version" }),
-                              y.jsx("strong", { children: "1.3g" }),
+                              y.jsx("strong", { children: "1.3h" }),
                             ],
                           }),
                           y.jsxs("div", {
