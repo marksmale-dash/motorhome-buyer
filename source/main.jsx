@@ -8,6 +8,7 @@ import {
   verifyEmailOtp,
 } from "./auth";
 import { isFacebookAdvert, saveMotorhome } from "./motorhome-data";
+import { EMPTY_MOTORHOME } from "./motorhome-defaults";
 
 (function () {
   const n = document.createElement("link").relList;
@@ -23824,41 +23825,7 @@ const ze = P_(
     },
   ),
   Nc = "motorhome-compass-draft-v02",
-  Xi = {
-    make: "",
-    model: "",
-    registration: "",
-    year: 2018,
-    price: 4e4,
-    mileage: 2e4,
-    dealer: "",
-    advert_url: "",
-    base_vehicle: "Peugeot Boxer",
-    euro_standard: "Euro 6",
-    bed_type: "Fixed island bed",
-    heating: "Truma",
-    kitchen_usable_with_bed: !0,
-    garage: !0,
-    separate_shower: !0,
-    payload_kg: "",
-    mtplm_kg: 3500,
-    length_m: "",
-    cab_aircon: !0,
-    cruise_control: !0,
-    reversing_camera: !0,
-    solar: !1,
-    awning: !1,
-    bike_rack: !1,
-    full_engine_history: !1,
-    habitation_history: !1,
-    damp_report: !1,
-    cambelt_status_known: !1,
-    tyres_under_six_years: !1,
-    warranty: !1,
-    favourite: !1,
-    notes: "",
-    photo_urls: [],
-  },
+  Xi = { ...EMPTY_MOTORHOME },
   Qa = {
     ...Xi,
     year: "",
@@ -27014,7 +26981,7 @@ Tap Continue to open this motorhome’s advert.`) &&
                             className: "settings-version",
                             children: [
                               y.jsx("span", { children: "Version" }),
-                              y.jsx("strong", { children: "1.3f" }),
+                              y.jsx("strong", { children: "1.3g" }),
                             ],
                           }),
                           y.jsxs("div", {
