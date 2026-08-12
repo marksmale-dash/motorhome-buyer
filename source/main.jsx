@@ -7,6 +7,7 @@ import {
   normalizeOtp,
   verifyEmailOtp,
 } from "./auth";
+import { isFacebookAdvert, saveMotorhome } from "./motorhome-data";
 
 (function () {
   const n = document.createElement("link").relList;
@@ -25661,22 +25662,32 @@ Tap Continue to open this motorhome’s advert.`) &&
       f("Please enter both make and model.");
       return;
     }
-    const w = an(ee),
+    const wasNew = !ee.id,
+      w = an(ee),
       H = {
         ...Mg(ee),
         score: w.score,
         traffic_light: w.light,
         verdict: w.verdict,
         updated_at: new Date().toISOString(),
-      },
-      { error: Q } = ee.id
-        ? await ze.from("motorhomes").update(H).eq("id", ee.id)
-        : await ze.from("motorhomes").insert(H);
-    if (Q) {
-      f(`Could not save: ${Q.message}`);
+      };
+    let Q;
+    try {
+      Q = await saveMotorhome(ze, H);
+    } catch (ue) {
+      f(`Could not save: ${ue.message}`);
       return;
     }
-    (localStorage.removeItem(Nc), mt(Xi), h(!1), f("Motorhome saved."), Mt());
+    localStorage.removeItem(Nc);
+    if (wasNew && isFacebookAdvert(Q.motorhome.advert_url)) {
+      (mt({ ...Xi, ...Q.motorhome }),
+        f(
+          "Motorhome saved. Add its Facebook photos now using the recovery steps below â€” saving again will update this record, not create a duplicate.",
+        ));
+    } else {
+      (mt(Xi), h(!1), f("Motorhome saved."));
+    }
+    await Mt();
   }
   async function gr(w) {
     if (!confirm("Delete this motorhome?")) return;
@@ -26279,7 +26290,7 @@ Tap Continue to open this motorhome’s advert.`) &&
                                         }),
                                         y.jsx("span", {
                                           children:
-                                            "Recover photos into this existing motorhome without creating a duplicate.",
+                                            "This motorhome is saved. Recover its advert photos here without creating a duplicate.",
                                         }),
                                       ],
                                     }),
@@ -27003,7 +27014,7 @@ Tap Continue to open this motorhome’s advert.`) &&
                             className: "settings-version",
                             children: [
                               y.jsx("span", { children: "Version" }),
-                              y.jsx("strong", { children: "1.3e" }),
+                              y.jsx("strong", { children: "1.3f" }),
                             ],
                           }),
                           y.jsxs("div", {

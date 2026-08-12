@@ -1,6 +1,6 @@
-/* Motorhome Compass v1.3e - configurable-length email OTP authentication.
+/* Motorhome Compass v1.3f - household-owned saves and Facebook photo recovery.
    Clears legacy caches and always checks the network for the current app shell. */
-const CACHE_VERSION = 'motorhome-compass-v1.3e-20260811'
+const CACHE_VERSION = 'motorhome-compass-v1.3f-20260812'
 
 self.addEventListener('install', () => {
   self.skipWaiting()
